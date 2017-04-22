@@ -1,0 +1,7 @@
+<view>
+    <image style="width:200rpx;height:200rpx;" src="/images/avatar.png"></image>
+    <text>Hello, 七月</text>
+    <view>
+        <text>开启小程序之旅</text>
+    </view>
+</view>
