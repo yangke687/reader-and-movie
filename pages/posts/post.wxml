@@ -1,5 +1,5 @@
 <view>
-    <swiper indicator-dots="true" autoplay="true" interval="2000">
+    <swiper indicator-dots="true" autoplay="true" interval="5000"i>
         <swiper-item>
             <image src="/images/wx.png"></image>
         </swiper-item>
@@ -10,4 +10,36 @@
             <image src="/images/vr.png"></image>
         </swiper-item>
     </swiper>
+
+    <view class="post-container">
+        <view class="post-author-date">
+            <image class="post-author" src="/images/avatar/1.png"></image>
+            <text class="post-date">Nov 25 2016</text>
+        </view>
+        <text class="post-title">正是虾肥蟹壮时</text>
+        <image class="post-image" src="/images/post/crab.png"></image>
+        <text class="post-content">菊黄蟹正肥，品尝秋之味。徐志摩把,“看初花的荻芦”和“到楼外楼吃蟹”,并列为秋天来杭州不能错过的风雅之事；用林妹妹的话讲是“螯封嫩玉双双满，</text>
+        <view class="post-like">
+            <image class="post-like-image" src="/images/icon/chat.png"></image>
+            <text class="post-like-font">92</text>
+            <image class="post-like-image" src="/images/icon/view.png"></image>
+            <text class="post-like-font">65</text>
+        </view>
+    </view>
+
+    <view class="post-container">
+        <view class="post-author-date">
+            <image class="post-author" src="/images/avatar/2.png"></image>
+            <text class="post-date">Nov 18 2016</text>
+        </view>
+        <text class="post-title">比利·林恩的中场故事</text>
+        <image class="post-image" src="/images/post/bl.png"></image>
+        <text class="post-content">一 “李安是一位绝不会重复自己的导演，本片将极富原创性李安众所瞩目的新片《比利林恩漫长的中场休息》，正式更名《半场无战事》</text>
+        <view class="post-like">
+            <image class="post-like-image" src="/images/icon/chat.png"></image>
+            <text class="post-like-font">113</text>
+            <image class="post-like-image" src="/images/icon/view.png"></image>
+            <text class="post-like-font">88</text>
+        </view>
+    </view>
 </view>
