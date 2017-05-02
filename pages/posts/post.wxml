@@ -11,7 +11,7 @@
         </swiper-item>
     </swiper>
 
-<block wx:for="{{posts}}" wx:for-item="item">
+<block wx:key="{{posts}}" wx:for="{{posts}}" wx:for-item="item">
     <view class="post-container">
         <view class="post-author-date">
             <image class="post-author" src="{{item.avatar}}"></image>
