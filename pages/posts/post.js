@@ -23,5 +23,10 @@ Page({
   onUnload:function(){
     // 生命周期函数--监听页面卸载
     console.log('on unload');
+  },
+  onPostTap: function(evt){
+    var postId = evt.currentTarget.dataset.postId;
+    console.log(postId);
+    //console.log('here');
   }
 })
