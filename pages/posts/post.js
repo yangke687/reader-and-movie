@@ -28,5 +28,9 @@ Page({
     var postId = evt.currentTarget.dataset.postId;
     console.log(postId);
     //console.log('here');
+
+    wx.navigateTo({
+      url: "post-detail/post-detail"
+    });
   }
 })
