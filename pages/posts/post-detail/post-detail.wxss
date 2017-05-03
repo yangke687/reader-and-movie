@@ -8,6 +8,16 @@
     height: 460rpx;
 }
 
+.audio{
+    width: 102rpx;
+    height: 110rpx;
+    position: absolute;
+    left: 50%;
+    margin-left: -51rpx;
+    top: 180rpx;
+    opacity: 0.6;
+}
+
 .author-date{
     flex-direction: row;
     margin-left: 30rpx;
