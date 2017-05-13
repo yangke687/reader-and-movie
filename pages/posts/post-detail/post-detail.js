@@ -57,6 +57,11 @@ Page({
             this.setData({
                 postIsCollected: true
             });
+            wx.showToast({
+               title: "收藏成功",
+               mask: true,
+               icon: 'success'
+           });
        }
     },
 
@@ -75,6 +80,11 @@ Page({
            wx.setStorageSync('postsCollected', postsCollected);
            this.setData({
                postIsCollected: false
+           });
+           wx.showToast({
+               title: "取消收藏",
+               mask: true,
+               icon: 'success'
            });
        }
     }
