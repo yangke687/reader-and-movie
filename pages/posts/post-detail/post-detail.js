@@ -87,5 +87,19 @@ Page({
                icon: 'success'
            });
        }
+    },
+
+    onShareTap: function(evt){
+        wx.showActionSheet({
+            itemList: [
+                "分享给微信好友",
+                "分享到朋友圈",
+                "分享到QQ",
+                "分享到微博"
+            ],
+            success: function(res){
+                console.log(res.tapIndex);
+            }
+        });
     }
 });
