@@ -1,6 +1,9 @@
 var postsData = require('../../../data/posts-data.js');
 
 Page({
+    data: {
+        isPlaying: false
+    },
     onLoad: function(option){
         
         var postData = 
@@ -100,6 +103,52 @@ Page({
             success: function(res){
                 console.log(res.tapIndex);
             }
+        });
+    },
+
+    onMusicTap: function(evt){
+        //console.log('play music');
+        var postId = evt.currentTarget.dataset.postid;
+        console.log(postId);
+        var postData = this.fetchPostData(postId,postsData.postList);
+
+        var isPlaying = this.data.isPlaying;
+
+        if( !isPlaying ){
+            wx.playBackgroundAudio({
+            dataUrl: postData.music.url,
+            title: postData.music.title,
+            coverImgUrl: postData.music.coverImg,
+            success: function(res){
+                
+            },
+            fail: function(res) {
+                // fail
+            },
+            complete: function(res) {
+                // complete
+            }
+            });
+            this.data.isPlaying = isPlaying = true;
+        }
+        else{
+            wx.pauseBackgroundAudio({
+              success: function(res){
+                // success
+              },
+              fail: function(res) {
+                // fail
+              },
+              complete: function(res) {
+                // complete
+              }
+            });
+            //isPlaying = false;
+            this.data.isPlaying = isPlaying = false;
+        }
+
+        this.setData({
+            isPlaying: isPlaying
         });
     }
 });
