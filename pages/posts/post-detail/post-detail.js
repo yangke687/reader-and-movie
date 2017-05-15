@@ -28,6 +28,21 @@ Page({
 
        // console.log('is collected',postIsCollected);
        // wx.clearStorageSync();
+
+       // 监听音乐总开关
+       var that = this;
+       wx.onBackgroundAudioPlay(function() {
+         var isPlaying = that.data.isPlaying = true;
+         that.setData({
+             isPlaying: isPlaying
+         });
+       });
+       wx.onBackgroundAudioPause(function() {
+         var isPlaying = that.data.isPlaying = false;
+         that.setData({
+             isPlaying: isPlaying
+         });
+       })
     },
 
     fetchPostData: function(postId,postsList){
