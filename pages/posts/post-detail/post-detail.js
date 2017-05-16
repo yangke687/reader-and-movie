@@ -6,7 +6,7 @@ Page({
         isPlaying: false
     },
     onLoad: function(option){
-       // console.log('global', this.data.isPlaying, app.globalData.isPlaying);
+       
         var postData = 
             this.fetchPostData(option.id,postsData.postList);
 
@@ -21,19 +21,17 @@ Page({
         }
 
         // postIsCollected
-        //console.log(wx.getStorageSync('postsCollected'))
         var postIsCollected = this.fetchPostData(option.id,wx.getStorageSync('postsCollected'))!=null;
         this.setData({
             postIsCollected: postIsCollected
         });
 
-       // console.log('is collected',postIsCollected);
-       // wx.clearStorageSync();
-
        // 初始化 
-       this.setData({
-           isPlaying: app.globalData.isPlaying
-       });
+       if( option.id === app.globalData.currentMusicPlayingPostId ){
+        this.setData({
+            isPlaying: app.globalData.isPlaying
+        });
+       }
 
        // 监听音乐总开关
        var that = this;
@@ -41,14 +39,26 @@ Page({
          that.setData({
              isPlaying: true
          });
-         app.globalData.isPlaying = true;
+         console.log("switch on",option.id, app.globalData.currentMusicPlayingPostId);
+        
+        app.globalData.currentMusicPlayingPostId = option.id;
+        app.globalData.isPlaying = true;
+         
        });
        wx.onBackgroundAudioPause(function() {
          that.setData({
              isPlaying: false
          });
-
+         console.log("switch off",option.id, app.globalData.currentMusicPlayingPostId);
+         
          app.globalData.isPlaying = false;
+         app.globalData.currentMusicPlayingPostId = null;
+
+         // 如果当前播放的音乐与不是当前文章对应的音乐，直接停止播放
+         if( app.globalData.currentMusicPlayingPostId!==null && option.id != app.globalData.currentMusicPlayingPostId ){
+            wx.stopBackgroundAudio();
+         }
+         
        })
     },
 
