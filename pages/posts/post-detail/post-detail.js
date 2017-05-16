@@ -1,11 +1,12 @@
 var postsData = require('../../../data/posts-data.js');
+var app = getApp();
 
 Page({
     data: {
         isPlaying: false
     },
     onLoad: function(option){
-        
+       // console.log('global', this.data.isPlaying, app.globalData.isPlaying);
         var postData = 
             this.fetchPostData(option.id,postsData.postList);
 
@@ -29,19 +30,25 @@ Page({
        // console.log('is collected',postIsCollected);
        // wx.clearStorageSync();
 
+       // 初始化 
+       this.setData({
+           isPlaying: app.globalData.isPlaying
+       });
+
        // 监听音乐总开关
        var that = this;
        wx.onBackgroundAudioPlay(function() {
-         var isPlaying = that.data.isPlaying = true;
          that.setData({
-             isPlaying: isPlaying
+             isPlaying: true
          });
+         app.globalData.isPlaying = true;
        });
        wx.onBackgroundAudioPause(function() {
-         var isPlaying = that.data.isPlaying = false;
          that.setData({
-             isPlaying: isPlaying
+             isPlaying: false
          });
+
+         app.globalData.isPlaying = false;
        })
     },
 
@@ -129,6 +136,7 @@ Page({
 
         var isPlaying = this.data.isPlaying;
 
+        // turn on music
         if( !isPlaying ){
             wx.playBackgroundAudio({
             dataUrl: postData.music.url,
@@ -144,9 +152,13 @@ Page({
                 // complete
             }
             });
-            this.data.isPlaying = isPlaying = true;
+            app.globalData.isPlaying = true;
+            this.data.isPlaying = true;
+            this.setData({
+                isPlaying: true
+            });
         }
-        else{
+        else{ // turn off music
             wx.pauseBackgroundAudio({
               success: function(res){
                 // success
@@ -159,11 +171,11 @@ Page({
               }
             });
             //isPlaying = false;
-            this.data.isPlaying = isPlaying = false;
+            app.globalData.isPlaying = false;
+            this.data.isPlaying =false;
+            this.setData({
+                isPlaying: false
+            });
         }
-
-        this.setData({
-            isPlaying: isPlaying
-        });
     }
 });
