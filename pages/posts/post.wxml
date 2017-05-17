@@ -2,13 +2,13 @@
 <view>
     <swiper indicator-dots="true" autoplay="true" interval="5000"i>
         <swiper-item>
-            <image src="/images/wx.png"></image>
+            <image catchtap="onPostTap" src="/images/wx.png" data-post-Id="3"></image>
         </swiper-item>
         <swiper-item>
-            <image src="/images/iqiyi.png"></image>
+            <image catchtap="onPostTap" src="/images/iqiyi.png" data-post-Id="5"></image>
         </swiper-item>
         <swiper-item>
-            <image src="/images/vr.png"></image>
+            <image catchtap="onPostTap" src="/images/vr.png" data-post-Id="4"></image>
         </swiper-item>
     </swiper>
 
