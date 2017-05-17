@@ -2,9 +2,22 @@
     "pages":[
         "pages/welcome/welcome",
         "pages/posts/post",
-        "pages/posts/post-detail/post-detail"
+        "pages/posts/post-detail/post-detail",
+        "pages/movies/movies"
     ],
     "window":{
         "navigationBarBackgroundColor":"#405f80"
+    },
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/posts/post",
+                "text": "阅读"
+            },
+            {
+                "pagePath": "pages/movies/movies",
+                "text": "电影"
+            }
+        ]
     }
 }
