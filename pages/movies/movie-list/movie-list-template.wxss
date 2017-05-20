@@ -1,0 +1,37 @@
+.movie-list-container{
+  background: #FFF;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-head{
+  padding: 30rpx 20rpx 22rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.slogan{
+  padding-top: 13rpx;
+  font-size: 24rpx;
+}
+
+.more{
+ 
+}
+
+.more-text{
+  margin-right: 10rpx;
+  color: #1f4ba5;
+}
+
+.more-img{
+  width: 9rpx;
+  height: 16rpx;
+}
+
+
+.movies-container{
+  display: flex;
+  flex-direction: row;
+}
