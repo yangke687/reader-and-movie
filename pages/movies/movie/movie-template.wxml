@@ -1,7 +1,7 @@
 <import src="../stars/stars.wxml" />
 <template name="movieTemplate">
   <view>
-    <image></image>
+    <image src="http://placehold.it/300x420"></image>
     <text>电影</text>
     <template is="starsTemplate" />
   </view>

@@ -1,0 +1,3 @@
+@import "stars/stars.wxss";
+@import "movie/movie-template.wxss";
+@import "movie-list/movie-list-template.wxss";
