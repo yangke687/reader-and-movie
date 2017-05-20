@@ -1,8 +1,8 @@
 <import src="../stars/stars.wxml" />
 <template name="movieTemplate">
-  <view>
-    <image src="http://placehold.it/300x420"></image>
-    <text>电影</text>
+  <view class="movie-container">
+    <image class="movie-img" src="http://placehold.it/300x420"></image>
+    <text class="movie-text">异星觉醒</text>
     <template is="starsTemplate" />
   </view>
 </template>

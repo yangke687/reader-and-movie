@@ -13,7 +13,7 @@
 .stars image{
   padding-left: 3rpx;
   width: 17rpx;
-  height: 17rpx;
+  height: 17rpx;  
 }
 
 .star-score{
