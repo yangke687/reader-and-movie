@@ -1,6 +1,11 @@
 var app = getApp();
 
 Page({
+    data: {
+      inTheatersMovies: {},
+      comingSoonMovies: {},
+      top250Movies: {}
+    },
     onLoad: function(evt){
       var prefix = app.globalData.doubanApiPrefix;
       var suffix = '?start=0&count=3';
@@ -8,12 +13,12 @@ Page({
       var comingSoonUrl = prefix + "/v2/movie/coming_soon" + suffix;
       var top250Url = prefix + "/v2/movie/top250" + suffix;
       // fetch movie list data
-      this.getMovieListData(inTheatersUrl);
-     // this.getMovieListData(comingSoonUrl);
-     // this.getMovieListData(top250Url);
+      this.getMovieListData(inTheatersUrl,'inTheatersMovies');
+      this.getMovieListData(comingSoonUrl,'comingSoonMovies');
+      this.getMovieListData(top250Url,'top250Movies');
     },
 
-    getMovieListData: function(url){
+    getMovieListData: function(url,settedKey){
       wx.request({
         url: url,
         method: 'GET',
@@ -21,12 +26,12 @@ Page({
           "content-type": "application/xml"
         },
         success: function(res){
-         this.processDoubanFunc(res.data); 
+         this.processDoubanFunc(res.data,settedKey); 
         }.bind(this)
       })
     },
 
-    processDoubanFunc: function(doubanMovies){
+    processDoubanFunc: function(doubanMovies,settedKey){
       var movies = [];
       for(var idx in doubanMovies.subjects){
         var sub = doubanMovies.subjects[idx];
@@ -41,10 +46,9 @@ Page({
           movieId: sub.id,
         };
         movies.push(temp);
-        console.log(movies);
-        this.setData({
-          movies: movies
-        });
+        var readyData = {};
+        readyData[settedKey] = {movies: movies };
+        this.setData(readyData);
       }
     }
 });
