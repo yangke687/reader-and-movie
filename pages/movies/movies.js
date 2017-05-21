@@ -32,6 +32,7 @@ Page({
     },
 
     processDoubanFunc: function(doubanMovies,settedKey){
+      //console.log(doubanMovies);
       var movies = [];
       for(var idx in doubanMovies.subjects){
         var sub = doubanMovies.subjects[idx];
@@ -50,7 +51,7 @@ Page({
         movies.push(temp);
         //console.log(temp);
         var readyData = {};
-        readyData[settedKey] = {movies: movies };
+        readyData[settedKey] = {movies: movies,grpTitle: doubanMovies.title };
         this.setData(readyData);
       }
     }
