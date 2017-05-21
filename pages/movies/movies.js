@@ -1,5 +1,5 @@
 var app = getApp();
-
+var util = require('../../utils/util.js');
 Page({
     data: {
       inTheatersMovies: {},
@@ -44,11 +44,15 @@ Page({
           average: sub.rating.average,
           coverageUrl: sub.images.large,
           movieId: sub.id,
+          // stars
+          stars: util.convertToStarsArray(doubanMovies.subjects[idx].rating.stars),
         };
         movies.push(temp);
+        //console.log(temp);
         var readyData = {};
         readyData[settedKey] = {movies: movies };
         this.setData(readyData);
       }
     }
 });
+
