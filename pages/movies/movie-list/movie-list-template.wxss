@@ -2,6 +2,7 @@
   background: #FFF;
   display: flex;
   flex-direction: column;
+  padding-bottom: 22rpx;
 }
 
 .movie-head{
