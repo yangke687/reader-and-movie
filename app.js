@@ -3,6 +3,7 @@ App({
     // ...
     globalData: {
         isPlaying: false,
-        currentMusicPlayingPostId: null
+        currentMusicPlayingPostId: null,
+        doubanApiPrefix: "https://api.douban.com",
     }
 });
