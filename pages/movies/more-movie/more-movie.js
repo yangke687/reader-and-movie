@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    category: ''
   },
 
   /**
@@ -13,6 +13,12 @@ Page({
    */
   onLoad: function (options) {
     //console.log(options.category);
-    
+    this.data.category = options.category;
+  },
+
+  onReady: function(evt){
+    wx.setNavigationBarTitle({
+      title: this.data.category
+    });
   }
 })
