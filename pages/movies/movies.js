@@ -42,7 +42,6 @@ Page({
           stars: util.convertToStarsArray(doubanMovies.subjects[idx].rating.stars),
         };
         movies.push(temp);
-        //console.log(temp);
         var readyData = {};
         readyData[settedKey] = {movies: movies,grpTitle: doubanMovies.title };
         this.setData(readyData);

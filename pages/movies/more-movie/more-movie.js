@@ -1,5 +1,6 @@
 // pages/movies/more-movie/more-movie.js
 var app = getApp();
+var util = require('../../../utils/util.js');
 Page({
 
   /**
@@ -7,7 +8,7 @@ Page({
    */
   data: {
     category: '',
-    movies: []
+    movies: {}
   },
 
   /**
@@ -29,6 +30,30 @@ Page({
         var url = prefix + "/v2/movie/top250";
         break;
     }
+    // 获取更多电影
+    util.http(url,function(res){
+      var doubanMovies = res.data;
+      var movies = [];
+      for (var idx in doubanMovies.subjects) {
+        var sub = doubanMovies.subjects[idx];
+        var title = sub.title;
+        if (title.length > 6) {
+          title = title.substr(0, 6) + '...';
+        }
+        var temp = {
+          title: title,
+          average: sub.rating.average,
+          coverageUrl: sub.images.large,
+          movieId: sub.id,
+          // stars
+          stars: util.convertToStarsArray(doubanMovies.subjects[idx].rating.stars),
+        };
+        movies.push(temp);
+        this.setData({
+          movies: movies
+        });
+      }
+    }.bind(this));
   },
 
   onReady: function(evt){
