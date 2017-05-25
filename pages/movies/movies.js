@@ -54,6 +54,16 @@ Page({
         readyData[settedKey] = {movies: movies,grpTitle: doubanMovies.title };
         this.setData(readyData);
       }
+    },
+
+    onMoreTap: function(evt){
+      //console.log('more');
+      var grpTitle = evt.currentTarget.dataset.category;
+      //console.log(grpTitle);
+      wx.navigateTo({
+        // 传参 电影分类名称 
+        url: 'more-movie/more-movie?category='+grpTitle,
+      });
     }
 });
 
