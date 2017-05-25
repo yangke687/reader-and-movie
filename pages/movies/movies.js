@@ -19,16 +19,9 @@ Page({
     },
 
     getMovieListData: function(url,settedKey){
-      wx.request({
-        url: url,
-        method: 'GET',
-        header: {
-          "content-type": "application/xml"
-        },
-        success: function(res){
-         this.processDoubanFunc(res.data,settedKey); 
-        }.bind(this)
-      })
+      util.http(url,function(res){
+        this.processDoubanFunc(res.data, settedKey); 
+      }.bind(this));
     },
 
     processDoubanFunc: function(doubanMovies,settedKey){
