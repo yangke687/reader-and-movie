@@ -91,5 +91,15 @@ Page({
       this.data.nextPageIsLoading = true;
       util.http(nextUrl,this.processDoubanData.bind(this));
     }
+  },
+
+  onReachBottom: function(evt){
+    var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
+    // show loading icon
+    wx.showNavigationBarLoading();
+    if (!this.data.nextPageIsLoading) {
+      this.data.nextPageIsLoading = true;
+      util.http(nextUrl, this.processDoubanData.bind(this));
+    }
   }
 })
