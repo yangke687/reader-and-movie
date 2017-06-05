@@ -75,6 +75,8 @@ Page({
     this.data.totalCount += 20;
     // hide loading icon
     wx.hideNavigationBarLoading();
+    // stop pull down refresh 
+    wx.stopPullDownRefresh();
   },
 
   onReady: function(evt){
@@ -101,5 +103,16 @@ Page({
       this.data.nextPageIsLoading = true;
       util.http(nextUrl, this.processDoubanData.bind(this));
     }
+  },
+
+  onPullDownRefresh: function(evt){
+    var refreshUrl = this.data.requestUrl + "?start=0&count=20";
+    // show loading icon
+    wx.showNavigationBarLoading();
+    // reset this.data.movies
+    this.data.movies = {};
+    this.data.isEmpty = true;
+    // ...
+    util.http(refreshUrl,this.processDoubanData.bind(this));
   }
 })
