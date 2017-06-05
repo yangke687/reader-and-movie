@@ -73,6 +73,8 @@ Page({
     // set off data loading mark
     this.data.nextPageIsLoading = false;
     this.data.totalCount += 20;
+    // hide loading icon
+    wx.hideNavigationBarLoading();
   },
 
   onReady: function(evt){
@@ -83,6 +85,8 @@ Page({
 
   onScrollLower: function(evt){
     var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
+    // show loading icon
+    wx.showNavigationBarLoading();
     if (!this.data.nextPageIsLoading){
       this.data.nextPageIsLoading = true;
       util.http(nextUrl,this.processDoubanData.bind(this));
