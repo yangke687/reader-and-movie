@@ -34,3 +34,14 @@
   margin-left: 20rpx;
   font-size: 28rpx;
 }
+
+.search-panel{
+  postion: absolute;
+  top: 80rpx;
+}
+
+.cancel-img{
+  height: 30rpx;
+  width: 30rpx;
+  margin: auto 0 auto 30rpx;
+}

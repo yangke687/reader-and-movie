@@ -4,7 +4,10 @@ Page({
     data: {
       inTheatersMovies: {},
       comingSoonMovies: {},
-      top250Movies: {}
+      top250Movies: {},
+      containerShow: true,
+      searchPanelShow: false,
+      searchResult: {}
     },
     onLoad: function(evt){
       var prefix = app.globalData.doubanApiPrefix;
@@ -60,11 +63,24 @@ Page({
 
     // movie search
     onBindFocus: function(evt){
-      console.log('input focus');
+      //console.log('switch view');
+      this.setData({
+        containerShow: false,
+        searchPanelShow: true,
+      });
     },
 
-    onBindChange: function(evt){
+     onBindChange: function(evt){
       console.log('input change');
-    }
+     },
+
+     // reset result state
+     onCancelImageTap: function(evt){
+      this.setData({
+        containerShow: true,
+        searchPanelShow: false,
+        searchResult: {},
+      });
+     }
 });
 
