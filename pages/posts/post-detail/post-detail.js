@@ -59,7 +59,15 @@ Page({
             wx.stopBackgroundAudio();
          }
          
-       })
+       });
+       // 监听音乐播放完毕，更新 "播放" 图标为 "暂停" 图标
+       wx.onBackgroundAudioStop(function(){
+          that.setData({
+            isPlaying: false
+          });
+          app.globalData.isPlaying = false;
+          app.globalData.currentMusicPlayingPostId = null;
+       });
     },
 
     fetchPostData: function(postId,postsList){
