@@ -71,7 +71,10 @@ Page({
     },
 
      onBindChange: function(evt){
-      console.log('input change');
+      var text = evt.detail.value;
+      if(!text) return;
+      var searchUrl = app.globalData.doubanApiPrefix + "/v2/movie/search?q=" + text;
+      this.getMovieListData(searchUrl,'searchResult');
      },
 
      // reset result state
