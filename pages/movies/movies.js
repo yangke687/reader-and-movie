@@ -4,7 +4,10 @@ Page({
     data: {
       inTheatersMovies: {},
       comingSoonMovies: {},
-      top250Movies: {}
+      top250Movies: {},
+      containerShow: true,
+      searchPanelShow: false,
+      searchResult: {}
     },
     onLoad: function(evt){
       var prefix = app.globalData.doubanApiPrefix;
@@ -56,6 +59,31 @@ Page({
         // 传参 电影分类名称 
         url: 'more-movie/more-movie?category='+grpTitle,
       });
-    }
+    },
+
+    // movie search
+    onBindFocus: function(evt){
+      //console.log('switch view');
+      this.setData({
+        containerShow: false,
+        searchPanelShow: true,
+      });
+    },
+
+     onBindChange: function(evt){
+      var text = evt.detail.value;
+      if(!text) return;
+      var searchUrl = app.globalData.doubanApiPrefix + "/v2/movie/search?q=" + text;
+      this.getMovieListData(searchUrl,'searchResult');
+     },
+
+     // reset result state
+     onCancelImageTap: function(evt){
+      this.setData({
+        containerShow: true,
+        searchPanelShow: false,
+        searchResult: {},
+      });
+     }
 });
 

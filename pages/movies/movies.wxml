@@ -1,6 +1,17 @@
 <import src="movie-list/movie-list-template.wxml" />
-<view class="container">
+<import src="movie-grid/movie-grid-template.wxml" />
+
+<view class="search">
+  <icon class="search-img" type="search" size="13" color="#405f80"></icon>
+  <input type="text" placeholder="血战钢锯岭,神奇四侠,生化危机:终章" placeholder-class="placeholder" bindfocus="onBindFocus" bindblur="onBindChange" />
+  <image wx:if="{{searchPanelShow}}" src="/images/icon/xx.png" class="cancel-img" catchtap="onCancelImageTap" />
+</view>
+<view class="container" wx:if="{{containerShow}}">
   <template is="movieListTemplate" data="{{...inTheatersMovies}}" />
   <template is="movieListTemplate" data="{{...comingSoonMovies}}" />
    <template is="movieListTemplate" data="{{...top250Movies}}" />
+</view>
+
+<view class="search-panel" wx:if="{{searchPanelShow}}">
+  <template is="movieGridTemplate" data="{{...searchResult}}"/>
 </view>
