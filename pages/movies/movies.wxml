@@ -1,4 +1,8 @@
 <import src="movie-list/movie-list-template.wxml" />
+<view class="search">
+  <icon class="search-img" type="search" size="13" color="#405f80"></icon>
+  <input type="text" placeholder="血战钢锯岭,神奇四侠,生化危机:终章" placeholder-class="placeholder" bindfocus="onBindFocus" bindchange="onBindChange" />
+</view>
 <view class="container">
   <template is="movieListTemplate" data="{{...inTheatersMovies}}" />
   <template is="movieListTemplate" data="{{...comingSoonMovies}}" />

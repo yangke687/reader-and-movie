@@ -56,6 +56,15 @@ Page({
         // 传参 电影分类名称 
         url: 'more-movie/more-movie?category='+grpTitle,
       });
+    },
+
+    // movie search
+    onBindFocus: function(evt){
+      console.log('input focus');
+    },
+
+    onBindChange: function(evt){
+      console.log('input change');
     }
 });
 
