@@ -61,6 +61,13 @@ Page({
       });
     },
 
+    onMovieTap: function(evt){
+      var id = evt.currentTarget.dataset.id;
+      wx.navigateTo({
+        url: 'movie-detail/movie-detail?id=' + id,
+      })
+    },
+
     // movie search
     onBindFocus: function(evt){
       //console.log('switch view');
