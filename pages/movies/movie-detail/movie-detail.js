@@ -102,5 +102,13 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  viewMoviePostImg: function(evt){
+    var src = evt.currentTarget.dataset.src;
+    wx.previewImage({
+      current: src,
+      urls: [src],
+    });
   }
 })
