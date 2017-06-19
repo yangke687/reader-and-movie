@@ -40,7 +40,7 @@ Page({
         wishCount: data.wish_count,
         commentCount: data.comments_count,
         year: data.year,
-        genres: data.genres.join(', '),
+        generes: data.genres.join(', '),
         stars: utils.convertToStarsArray(data.rating.stars),
         score: data.rating.average,
         director: director,
