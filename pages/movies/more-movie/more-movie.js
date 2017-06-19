@@ -112,6 +112,7 @@ Page({
     // reset this.data.movies
     this.data.movies = {};
     this.data.isEmpty = true;
+    this.data.totalCount = 0;
     // ...
     util.http(refreshUrl,this.processDoubanData.bind(this));
   }

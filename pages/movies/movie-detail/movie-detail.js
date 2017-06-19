@@ -38,7 +38,7 @@ Page({
         title: data.title,
         origTitle: data.original_title,
         wishCount: data.wish_count,
-        commentCount: data.comment_count,
+        commentCount: data.comments_count,
         year: data.year,
         genres: data.genres.join(', '),
         stars: utils.convertToStarsArray(data.rating.stars),
@@ -48,10 +48,11 @@ Page({
         castsInfo: utils.convertToCastInfos(data.casts),
         summary: data.summary
       };
+      //console.log(movie);
       this.setData({
         movie: movie
       });
-    });
+    }.bind(this));
   },
 
   /**
